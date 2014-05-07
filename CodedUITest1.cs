@@ -16,31 +16,29 @@ namespace CalculadoraWindowsCUIT
     /// Summary description for CodedUITest1
     /// </summary>
     [CodedUITest]
-    public class CodedUITest1
+    public class criaArquivoTexto
     {
-        public CodedUITest1()
+        public criaArquivoTexto()
         {
         }
 
-        [DeploymentItem("massa_teste_soma.csv"),
-            DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
-                @"C:\Users\Lucas Ribeiro\Documents\Visual Studio 2013\Projects\CalculadoraWindowsCUIT\massa_teste_soma.csv",
-                "massa_teste_soma#csv",
-                DataAccessMethod.Sequential),
-
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
+                    @"C:\Users\Lucas Ribeiro\Documents\Visual Studio 2013\Projects\CalculadoraWindowsCUIT\teste2.csv",
+                    "teste2#csv",
+                    DataAccessMethod.Sequential), 
+        DeploymentItem("teste2.csv"), 
         TestMethod]
-        public void somaDoisNumerosTestMethod()
-        {
-            // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
-            //Mapeamento da massa para o Script
-            this.UIMap.somaDoisNumerosViaTeclado_ActionParams.UIItem10TextSendKeys1 = TestContext.DataRow["Numero1"].ToString();
-            this.UIMap.somaDoisNumerosViaTeclado_ActionParams.UIItem10TextSendKeys2 = TestContext.DataRow["Numero2"].ToString();
-            //Resultado Esperado
-            this.UIMap.somaDoisNumerosViaTeclado_ActionParams.UIItem10TextSendKeys3 = TestContext.DataRow["Resultado"].ToString();
 
-            this.UIMap.somaDoisNumerosViaTeclado_Action();
-            this.UIMap.somaDoisNumerosViaTeclado_Assert();
-            this.UIMap.fechaCalculadora_Action();
+        public void testCriarArquivoTexto()
+        {
+            this.UIMap.writeInNotepadParams.CampoDeTextoText = TestContext.DataRow["texto"].ToString();
+            this.UIMap.saveFileParams.txtNomeDoArquivoEditableItem = TestContext.DataRow["arquivo"].ToString();
+            this.UIMap.verificaNomeNaBarraDeTituloExpectedValues.BarraDeTitulosDisplayText = TestContext.DataRow["arquivo"].ToString();
+            // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
+            this.UIMap.openNotepad();
+            this.UIMap.writeInNotepad();
+            this.UIMap.saveFile();
+            this.UIMap.verificaNomeNaBarraDeTitulo();
         }
 
         #region Additional test attributes

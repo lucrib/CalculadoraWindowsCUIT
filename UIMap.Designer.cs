@@ -30,149 +30,7 @@ namespace CalculadoraWindowsCUIT
     {
         
         /// <summary>
-        /// Faz a soma de dois números da calculadora.
-        /// </summary>
-        public void realizaSomaDeDoisNumeros()
-        {
-            #region Variable Declarations
-            WinButton uIItem5Button = this.UICalculadoraWindow.UIItemWindow.UIItem5Button;
-            WinButton uIAdicionarButton = this.UICalculadoraWindow.UIItemWindow1.UIAdicionarButton;
-            WinButton uIIgualaButton = this.UICalculadoraWindow.UIItemWindow2.UIIgualaButton;
-            #endregion
-
-            // Launch '%windir%\System32\calc.exe'
-            ApplicationUnderTest uICalculadoraWindow = ApplicationUnderTest.Launch(this.realizaSomaDeDoisNumerosParams.UICalculadoraWindowExePath, this.realizaSomaDeDoisNumerosParams.UICalculadoraWindowAlternateExePath);
-
-            // Click '5' button
-            Mouse.Click(uIItem5Button, new Point(16, 11));
-
-            // Double-Click 'Adicionar' button
-            Mouse.DoubleClick(uIAdicionarButton, new Point(21, 12));
-
-            // Click '5' button
-            Mouse.Click(uIItem5Button, new Point(14, 11));
-
-            // Click 'Igual a' button
-            Mouse.Click(uIIgualaButton, new Point(16, 30));
-        }
-        
-        /// <summary>
-        /// Verifica se o valor do visor é o valor esperado
-        /// </summary>
-        public void assertEqualValorDoVisor()
-        {
-            #region Variable Declarations
-            WinText uIItem10Text = this.UICalculadoraWindow.UIItem10Window.UIItem10Text;
-            #endregion
-
-            // Verify that the 'DisplayText' property of '10' label equals '10'
-            Assert.AreEqual(this.assertEqualValorDoVisorExpectedValues.UIItem10TextDisplayText, uIItem10Text.DisplayText, "Valores incondizentes");
-        }
-        
-        /// <summary>
-        /// Faz a soma de dois números inserindo os valores a partir do teclado.
-        /// </summary>
-        public void somaDoisNumeros()
-        {
-            #region Variable Declarations
-            WinText uIItem10Text = this.UICalculadoraWindow.UIItem10Window.UIItem10Text;
-            #endregion
-
-            // Launch '%windir%\System32\calc.exe'
-            ApplicationUnderTest calcApplication = ApplicationUnderTest.Launch(this.somaDoisNumerosParams.ExePath, this.somaDoisNumerosParams.AlternateExePath);
-
-            // Type '8' in '10' label
-            Keyboard.SendKeys(uIItem10Text, this.somaDoisNumerosParams.UIItem10TextSendKeys, ModifierKeys.None);
-
-            // Type '{+}' in '10' label
-            Keyboard.SendKeys(uIItem10Text, this.somaDoisNumerosParams.UIItem10TextSendKeys1, ModifierKeys.None);
-
-            // Type '3' in '10' label
-            Keyboard.SendKeys(uIItem10Text, this.somaDoisNumerosParams.UIItem10TextSendKeys2, ModifierKeys.None);
-
-            // Type '{Enter}' in '10' label
-            Keyboard.SendKeys(uIItem10Text, this.somaDoisNumerosParams.UIItem10TextSendKeys3, ModifierKeys.None);
-        }
-        
-        /// <summary>
-        /// Valida o resultado da soma de dois números atravez do teclado principal
-        /// </summary>
-        public void somaDoisNumerosViaTeclado_Assertions()
-        {
-            #region Variable Declarations
-            WinText uIItem10Text = this.UICalculadoraWindow.UIItem10Window.UIItem10Text;
-            #endregion
-
-            // Verify that the 'DisplayText' property of '10' label equals '11'
-            Assert.AreEqual(this.somaDoisNumerosViaTeclado_AssertionsExpectedValues.UIItem10TextDisplayText, uIItem10Text.DisplayText, "Resultado obtido na Soma de Dois Numeros via teclado diferente do esperado");
-        }
-        
-        /// <summary>
-        /// Fecha a Calculadora
-        /// </summary>
-        public void fecharCalculadora_Action()
-        {
-            #region Variable Declarations
-            WinButton uIFecharButton = this.UICalculadoraWindow.UICalculadoraTitleBar.UIFecharButton;
-            #endregion
-
-            // Click 'Fechar' button
-            Mouse.Click(uIFecharButton, new Point(33, 11));
-        }
-        
-        /// <summary>
-        /// somaDoisNumerosViaTeclado_Action - Use 'somaDoisNumerosViaTeclado_ActionParams' to pass parameters into this method.
-        /// </summary>
-        public void somaDoisNumerosViaTeclado_Action()
-        {
-            #region Variable Declarations
-            WinText uIItem10Text = this.UICalculadoraWindow.UIItem10Window.UIItem10Text;
-            #endregion
-
-            // Launch '%windir%\System32\calc.exe'
-            ApplicationUnderTest uICalculadoraWindow = ApplicationUnderTest.Launch(this.somaDoisNumerosViaTeclado_ActionParams.UICalculadoraWindowExePath, this.somaDoisNumerosViaTeclado_ActionParams.UICalculadoraWindowAlternateExePath);
-
-            // Type '8' in '10' label
-            Keyboard.SendKeys(uIItem10Text, this.somaDoisNumerosViaTeclado_ActionParams.UIItem10TextSendKeys, ModifierKeys.None);
-
-            // Type '{+}' in '10' label
-            Keyboard.SendKeys(uIItem10Text, this.somaDoisNumerosViaTeclado_ActionParams.UIItem10TextSendKeys1, ModifierKeys.None);
-
-            // Type '3' in '10' label
-            Keyboard.SendKeys(uIItem10Text, this.somaDoisNumerosViaTeclado_ActionParams.UIItem10TextSendKeys2, ModifierKeys.None);
-
-            // Type '{Enter}' in '10' label
-            Keyboard.SendKeys(uIItem10Text, this.somaDoisNumerosViaTeclado_ActionParams.UIItem10TextSendKeys3, ModifierKeys.None);
-        }
-        
-        /// <summary>
-        /// somaDoisNumerosViaTeclado_Assert - Use 'somaDoisNumerosViaTeclado_AssertExpectedValues' to pass parameters into this method.
-        /// </summary>
-        public void somaDoisNumerosViaTeclado_Assert()
-        {
-            #region Variable Declarations
-            WinText uIItem10Text = this.UICalculadoraWindow.UIItem10Window.UIItem10Text;
-            #endregion
-
-            // Verify that the 'DisplayText' property of '10' label equals '11'
-            Assert.AreEqual(this.somaDoisNumerosViaTeclado_AssertExpectedValues.UIItem10TextDisplayText, uIItem10Text.DisplayText, "Erro Do Assertion");
-        }
-        
-        /// <summary>
-        /// fechaCalculadora_Action
-        /// </summary>
-        public void fechaCalculadora_Action()
-        {
-            #region Variable Declarations
-            WinButton uIFecharButton = this.UICalculadoraWindow.UICalculadoraTitleBar.UIFecharButton;
-            #endregion
-
-            // Click 'Fechar' button
-            Mouse.Click(uIFecharButton, new Point(27, 15));
-        }
-        
-        /// <summary>
-        /// Abre o bloco de notas
+        /// Opens the micrsofot windows notepad
         /// </summary>
         public void openNotepad()
         {
@@ -182,104 +40,53 @@ namespace CalculadoraWindowsCUIT
         }
         
         /// <summary>
-        /// Verifica se realmente o bloco de notas foi aberto
+        /// Writes something in the notepad
         /// </summary>
-        public void verificaNotepad()
+        public void writeInNotepad()
         {
             #region Variable Declarations
-            WinTitleBar uISemtítuloBlocodenotaTitleBar = this.UISemtítuloBlocodenotaWindow.UISemtítuloBlocodenotaTitleBar;
+            WinEdit campoDeTexto = this.BlocoDeNotas.Janela.CampoDeTexto;
             #endregion
 
-            // Verify that the 'DisplayText' property of 'Sem título - Bloco de notas' title bar contains 'Bloco de notas'
-            StringAssert.Contains(uISemtítuloBlocodenotaTitleBar.DisplayText, this.verificaNotepadExpectedValues.UISemtítuloBlocodenotaTitleBarDisplayText, "Verifica se contem Bloco de Notas no Título da janela");
+            // Type 'teste teste teste' in text box
+            campoDeTexto.Text = this.writeInNotepadParams.CampoDeTextoText;
         }
         
         /// <summary>
-        /// Insere o texto desejado no bloco de notas
+        /// Saves the file with the name "Nome"
         /// </summary>
-        public void insertTextInNotepad()
+        public void saveFile()
         {
             #region Variable Declarations
-            WinEdit uIItemEdit = this.UISemtítuloBlocodenotaWindow.UIItemWindow.UIItemEdit;
+            WinMenuItem menuSalvar = this.BlocoDeNotas.BarraDeMenu.MenuArquivo.MenuSalvar;
+            WinComboBox txtNomeDoArquivo = this.JanelaSalvar.PainelDeDetalhes.txtNomeDoArquivo;
+            WinButton botaoSalvar = this.JanelaSalvar.UISalvarWindow.BotaoSalvar;
             #endregion
 
-            // Type 'Digitar um texto que vem de uma fonte externa ou massa de dados.' in text box
-            uIItemEdit.Text = this.insertTextInNotepadParams.UIItemEditText;
+            // Click 'Arquivo' -> 'Salvar Ctrl+S' menu item
+            Mouse.Click(menuSalvar, new Point(61, 10));
+
+            // Select 'Nome' in 'Nome:' combo box
+            txtNomeDoArquivo.EditableItem = this.saveFileParams.txtNomeDoArquivoEditableItem;
+
+            // Click 'Sa&lvar' button
+            Mouse.Click(botaoSalvar, new Point(47, 9));
+        }
+        
+        /// <summary>
+        /// verificaNomeNaBarraDeTitulo - Use 'verificaNomeNaBarraDeTituloExpectedValues' to pass parameters into this method.
+        /// </summary>
+        public void verificaNomeNaBarraDeTitulo()
+        {
+            #region Variable Declarations
+            WinTitleBar barraDeTitulos = this.BlocoDeNotas.BarraDeTitulos;
+            #endregion
+
+            // Verify that the 'DisplayText' property of 'Nome - Bloco de notas' title bar contains 'Nome'
+            StringAssert.Contains(barraDeTitulos.DisplayText, this.verificaNomeNaBarraDeTituloExpectedValues.BarraDeTitulosDisplayText);
         }
         
         #region Properties
-        public virtual realizaSomaDeDoisNumerosParams realizaSomaDeDoisNumerosParams
-        {
-            get
-            {
-                if ((this.mrealizaSomaDeDoisNumerosParams == null))
-                {
-                    this.mrealizaSomaDeDoisNumerosParams = new realizaSomaDeDoisNumerosParams();
-                }
-                return this.mrealizaSomaDeDoisNumerosParams;
-            }
-        }
-        
-        public virtual assertEqualValorDoVisorExpectedValues assertEqualValorDoVisorExpectedValues
-        {
-            get
-            {
-                if ((this.massertEqualValorDoVisorExpectedValues == null))
-                {
-                    this.massertEqualValorDoVisorExpectedValues = new assertEqualValorDoVisorExpectedValues();
-                }
-                return this.massertEqualValorDoVisorExpectedValues;
-            }
-        }
-        
-        public virtual somaDoisNumerosParams somaDoisNumerosParams
-        {
-            get
-            {
-                if ((this.msomaDoisNumerosParams == null))
-                {
-                    this.msomaDoisNumerosParams = new somaDoisNumerosParams();
-                }
-                return this.msomaDoisNumerosParams;
-            }
-        }
-        
-        public virtual somaDoisNumerosViaTeclado_AssertionsExpectedValues somaDoisNumerosViaTeclado_AssertionsExpectedValues
-        {
-            get
-            {
-                if ((this.msomaDoisNumerosViaTeclado_AssertionsExpectedValues == null))
-                {
-                    this.msomaDoisNumerosViaTeclado_AssertionsExpectedValues = new somaDoisNumerosViaTeclado_AssertionsExpectedValues();
-                }
-                return this.msomaDoisNumerosViaTeclado_AssertionsExpectedValues;
-            }
-        }
-        
-        public virtual somaDoisNumerosViaTeclado_ActionParams somaDoisNumerosViaTeclado_ActionParams
-        {
-            get
-            {
-                if ((this.msomaDoisNumerosViaTeclado_ActionParams == null))
-                {
-                    this.msomaDoisNumerosViaTeclado_ActionParams = new somaDoisNumerosViaTeclado_ActionParams();
-                }
-                return this.msomaDoisNumerosViaTeclado_ActionParams;
-            }
-        }
-        
-        public virtual somaDoisNumerosViaTeclado_AssertExpectedValues somaDoisNumerosViaTeclado_AssertExpectedValues
-        {
-            get
-            {
-                if ((this.msomaDoisNumerosViaTeclado_AssertExpectedValues == null))
-                {
-                    this.msomaDoisNumerosViaTeclado_AssertExpectedValues = new somaDoisNumerosViaTeclado_AssertExpectedValues();
-                }
-                return this.msomaDoisNumerosViaTeclado_AssertExpectedValues;
-            }
-        }
-        
         public virtual openNotepadParams openNotepadParams
         {
             get
@@ -292,222 +99,79 @@ namespace CalculadoraWindowsCUIT
             }
         }
         
-        public virtual verificaNotepadExpectedValues verificaNotepadExpectedValues
+        public virtual writeInNotepadParams writeInNotepadParams
         {
             get
             {
-                if ((this.mverificaNotepadExpectedValues == null))
+                if ((this.mwriteInNotepadParams == null))
                 {
-                    this.mverificaNotepadExpectedValues = new verificaNotepadExpectedValues();
+                    this.mwriteInNotepadParams = new writeInNotepadParams();
                 }
-                return this.mverificaNotepadExpectedValues;
+                return this.mwriteInNotepadParams;
             }
         }
         
-        public virtual insertTextInNotepadParams insertTextInNotepadParams
+        public virtual saveFileParams saveFileParams
         {
             get
             {
-                if ((this.minsertTextInNotepadParams == null))
+                if ((this.msaveFileParams == null))
                 {
-                    this.minsertTextInNotepadParams = new insertTextInNotepadParams();
+                    this.msaveFileParams = new saveFileParams();
                 }
-                return this.minsertTextInNotepadParams;
+                return this.msaveFileParams;
             }
         }
         
-        public UICalculadoraWindow UICalculadoraWindow
+        public virtual verificaNomeNaBarraDeTituloExpectedValues verificaNomeNaBarraDeTituloExpectedValues
         {
             get
             {
-                if ((this.mUICalculadoraWindow == null))
+                if ((this.mverificaNomeNaBarraDeTituloExpectedValues == null))
                 {
-                    this.mUICalculadoraWindow = new UICalculadoraWindow();
+                    this.mverificaNomeNaBarraDeTituloExpectedValues = new verificaNomeNaBarraDeTituloExpectedValues();
                 }
-                return this.mUICalculadoraWindow;
+                return this.mverificaNomeNaBarraDeTituloExpectedValues;
             }
         }
         
-        public UISemtítuloBlocodenotaWindow UISemtítuloBlocodenotaWindow
+        public BlocoDeNotas BlocoDeNotas
         {
             get
             {
-                if ((this.mUISemtítuloBlocodenotaWindow == null))
+                if ((this.mBlocoDeNotas == null))
                 {
-                    this.mUISemtítuloBlocodenotaWindow = new UISemtítuloBlocodenotaWindow();
+                    this.mBlocoDeNotas = new BlocoDeNotas();
                 }
-                return this.mUISemtítuloBlocodenotaWindow;
+                return this.mBlocoDeNotas;
+            }
+        }
+        
+        public JanelaSalvar JanelaSalvar
+        {
+            get
+            {
+                if ((this.mJanelaSalvar == null))
+                {
+                    this.mJanelaSalvar = new JanelaSalvar();
+                }
+                return this.mJanelaSalvar;
             }
         }
         #endregion
         
         #region Fields
-        private realizaSomaDeDoisNumerosParams mrealizaSomaDeDoisNumerosParams;
-        
-        private assertEqualValorDoVisorExpectedValues massertEqualValorDoVisorExpectedValues;
-        
-        private somaDoisNumerosParams msomaDoisNumerosParams;
-        
-        private somaDoisNumerosViaTeclado_AssertionsExpectedValues msomaDoisNumerosViaTeclado_AssertionsExpectedValues;
-        
-        private somaDoisNumerosViaTeclado_ActionParams msomaDoisNumerosViaTeclado_ActionParams;
-        
-        private somaDoisNumerosViaTeclado_AssertExpectedValues msomaDoisNumerosViaTeclado_AssertExpectedValues;
-        
         private openNotepadParams mopenNotepadParams;
         
-        private verificaNotepadExpectedValues mverificaNotepadExpectedValues;
+        private writeInNotepadParams mwriteInNotepadParams;
         
-        private insertTextInNotepadParams minsertTextInNotepadParams;
+        private saveFileParams msaveFileParams;
         
-        private UICalculadoraWindow mUICalculadoraWindow;
+        private verificaNomeNaBarraDeTituloExpectedValues mverificaNomeNaBarraDeTituloExpectedValues;
         
-        private UISemtítuloBlocodenotaWindow mUISemtítuloBlocodenotaWindow;
-        #endregion
-    }
-    
-    /// <summary>
-    /// Parameters to be passed into 'realizaSomaDeDoisNumeros'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
-    public class realizaSomaDeDoisNumerosParams
-    {
+        private BlocoDeNotas mBlocoDeNotas;
         
-        #region Fields
-        /// <summary>
-        /// Launch '%windir%\System32\calc.exe'
-        /// </summary>
-        public string UICalculadoraWindowExePath = "C:\\Windows\\System32\\calc.exe";
-        
-        /// <summary>
-        /// Launch '%windir%\System32\calc.exe'
-        /// </summary>
-        public string UICalculadoraWindowAlternateExePath = "%windir%\\System32\\calc.exe";
-        #endregion
-    }
-    
-    /// <summary>
-    /// Parameters to be passed into 'assertEqualValorDoVisor'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
-    public class assertEqualValorDoVisorExpectedValues
-    {
-        
-        #region Fields
-        /// <summary>
-        /// Verify that the 'DisplayText' property of '10' label equals '10'
-        /// </summary>
-        public string UIItem10TextDisplayText = "10";
-        #endregion
-    }
-    
-    /// <summary>
-    /// Parameters to be passed into 'somaDoisNumeros'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
-    public class somaDoisNumerosParams
-    {
-        
-        #region Fields
-        /// <summary>
-        /// Launch '%windir%\System32\calc.exe'
-        /// </summary>
-        public string ExePath = "C:\\Windows\\System32\\calc.exe";
-        
-        /// <summary>
-        /// Launch '%windir%\System32\calc.exe'
-        /// </summary>
-        public string AlternateExePath = "%windir%\\System32\\calc.exe";
-        
-        /// <summary>
-        /// Type '8' in '10' label
-        /// </summary>
-        public string UIItem10TextSendKeys = "8";
-        
-        /// <summary>
-        /// Type '{+}' in '10' label
-        /// </summary>
-        public string UIItem10TextSendKeys1 = "{+}";
-        
-        /// <summary>
-        /// Type '3' in '10' label
-        /// </summary>
-        public string UIItem10TextSendKeys2 = "3";
-        
-        /// <summary>
-        /// Type '{Enter}' in '10' label
-        /// </summary>
-        public string UIItem10TextSendKeys3 = "{Enter}";
-        #endregion
-    }
-    
-    /// <summary>
-    /// Parameters to be passed into 'somaDoisNumerosViaTeclado_Assertions'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
-    public class somaDoisNumerosViaTeclado_AssertionsExpectedValues
-    {
-        
-        #region Fields
-        /// <summary>
-        /// Verify that the 'DisplayText' property of '10' label equals '11'
-        /// </summary>
-        public string UIItem10TextDisplayText = "11";
-        #endregion
-    }
-    
-    /// <summary>
-    /// Parameters to be passed into 'somaDoisNumerosViaTeclado_Action'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
-    public class somaDoisNumerosViaTeclado_ActionParams
-    {
-        
-        #region Fields
-        /// <summary>
-        /// Launch '%windir%\System32\calc.exe'
-        /// </summary>
-        public string UICalculadoraWindowExePath = "C:\\Windows\\System32\\calc.exe";
-        
-        /// <summary>
-        /// Launch '%windir%\System32\calc.exe'
-        /// </summary>
-        public string UICalculadoraWindowAlternateExePath = "%windir%\\System32\\calc.exe";
-        
-        /// <summary>
-        /// Type '8' in '10' label
-        /// </summary>
-        public string UIItem10TextSendKeys = "8";
-        
-        /// <summary>
-        /// Type '{+}' in '10' label
-        /// </summary>
-        public string UIItem10TextSendKeys1 = "{+}";
-        
-        /// <summary>
-        /// Type '3' in '10' label
-        /// </summary>
-        public string UIItem10TextSendKeys2 = "3";
-        
-        /// <summary>
-        /// Type '{Enter}' in '10' label
-        /// </summary>
-        public string UIItem10TextSendKeys3 = "{Enter}";
-        #endregion
-    }
-    
-    /// <summary>
-    /// Parameters to be passed into 'somaDoisNumerosViaTeclado_Assert'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
-    public class somaDoisNumerosViaTeclado_AssertExpectedValues
-    {
-        
-        #region Fields
-        /// <summary>
-        /// Verify that the 'DisplayText' property of '10' label equals '11'
-        /// </summary>
-        public string UIItem10TextDisplayText = "11";
+        private JanelaSalvar mJanelaSalvar;
         #endregion
     }
     
@@ -532,356 +196,119 @@ namespace CalculadoraWindowsCUIT
     }
     
     /// <summary>
-    /// Parameters to be passed into 'verificaNotepad'
+    /// Parameters to be passed into 'writeInNotepad'
     /// </summary>
     [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
-    public class verificaNotepadExpectedValues
+    public class writeInNotepadParams
     {
         
         #region Fields
         /// <summary>
-        /// Verify that the 'DisplayText' property of 'Sem título - Bloco de notas' title bar contains 'Bloco de notas'
+        /// Type 'teste teste teste' in text box
         /// </summary>
-        public string UISemtítuloBlocodenotaTitleBarDisplayText = "Bloco de notas";
+        public string CampoDeTextoText = "teste teste teste";
         #endregion
     }
     
     /// <summary>
-    /// Parameters to be passed into 'insertTextInNotepad'
+    /// Parameters to be passed into 'saveFile'
     /// </summary>
     [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
-    public class insertTextInNotepadParams
+    public class saveFileParams
     {
         
         #region Fields
         /// <summary>
-        /// Type 'Digitar um texto que vem de uma fonte externa ou massa de dados.' in text box
+        /// Select 'Nome' in 'Nome:' combo box
         /// </summary>
-        public string UIItemEditText = "Digitar um texto que vem de uma fonte externa ou massa de dados.";
+        public string txtNomeDoArquivoEditableItem = "Nome";
         #endregion
     }
     
+    /// <summary>
+    /// Parameters to be passed into 'verificaNomeNaBarraDeTitulo'
+    /// </summary>
     [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
-    public class UICalculadoraWindow : WinWindow
+    public class verificaNomeNaBarraDeTituloExpectedValues
     {
-        
-        public UICalculadoraWindow()
-        {
-            #region Search Criteria
-            this.SearchProperties[WinWindow.PropertyNames.Name] = "Calculadora";
-            this.SearchProperties[WinWindow.PropertyNames.ClassName] = "CalcFrame";
-            this.WindowTitles.Add("Calculadora");
-            #endregion
-        }
-        
-        #region Properties
-        public UIItemWindow UIItemWindow
-        {
-            get
-            {
-                if ((this.mUIItemWindow == null))
-                {
-                    this.mUIItemWindow = new UIItemWindow(this);
-                }
-                return this.mUIItemWindow;
-            }
-        }
-        
-        public UIItemWindow1 UIItemWindow1
-        {
-            get
-            {
-                if ((this.mUIItemWindow1 == null))
-                {
-                    this.mUIItemWindow1 = new UIItemWindow1(this);
-                }
-                return this.mUIItemWindow1;
-            }
-        }
-        
-        public UIItemWindow2 UIItemWindow2
-        {
-            get
-            {
-                if ((this.mUIItemWindow2 == null))
-                {
-                    this.mUIItemWindow2 = new UIItemWindow2(this);
-                }
-                return this.mUIItemWindow2;
-            }
-        }
-        
-        public UIItem10Window UIItem10Window
-        {
-            get
-            {
-                if ((this.mUIItem10Window == null))
-                {
-                    this.mUIItem10Window = new UIItem10Window(this);
-                }
-                return this.mUIItem10Window;
-            }
-        }
-        
-        public UICalculadoraTitleBar UICalculadoraTitleBar
-        {
-            get
-            {
-                if ((this.mUICalculadoraTitleBar == null))
-                {
-                    this.mUICalculadoraTitleBar = new UICalculadoraTitleBar(this);
-                }
-                return this.mUICalculadoraTitleBar;
-            }
-        }
-        #endregion
         
         #region Fields
-        private UIItemWindow mUIItemWindow;
-        
-        private UIItemWindow1 mUIItemWindow1;
-        
-        private UIItemWindow2 mUIItemWindow2;
-        
-        private UIItem10Window mUIItem10Window;
-        
-        private UICalculadoraTitleBar mUICalculadoraTitleBar;
+        /// <summary>
+        /// Verify that the 'DisplayText' property of 'Nome - Bloco de notas' title bar contains 'Nome'
+        /// </summary>
+        public string BarraDeTitulosDisplayText = "Nome";
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
-    public class UIItemWindow : WinWindow
+    public class BlocoDeNotas : WinWindow
     {
         
-        public UIItemWindow(UITestControl searchLimitContainer) : 
-                base(searchLimitContainer)
-        {
-            #region Search Criteria
-            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "135";
-            this.WindowTitles.Add("Calculadora");
-            #endregion
-        }
-        
-        #region Properties
-        public WinButton UIItem5Button
-        {
-            get
-            {
-                if ((this.mUIItem5Button == null))
-                {
-                    this.mUIItem5Button = new WinButton(this);
-                    #region Search Criteria
-                    this.mUIItem5Button.SearchProperties[WinButton.PropertyNames.Name] = "5";
-                    this.mUIItem5Button.WindowTitles.Add("Calculadora");
-                    #endregion
-                }
-                return this.mUIItem5Button;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private WinButton mUIItem5Button;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
-    public class UIItemWindow1 : WinWindow
-    {
-        
-        public UIItemWindow1(UITestControl searchLimitContainer) : 
-                base(searchLimitContainer)
-        {
-            #region Search Criteria
-            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "93";
-            this.WindowTitles.Add("Calculadora");
-            #endregion
-        }
-        
-        #region Properties
-        public WinButton UIAdicionarButton
-        {
-            get
-            {
-                if ((this.mUIAdicionarButton == null))
-                {
-                    this.mUIAdicionarButton = new WinButton(this);
-                    #region Search Criteria
-                    this.mUIAdicionarButton.SearchProperties[WinButton.PropertyNames.Name] = "Adicionar";
-                    this.mUIAdicionarButton.WindowTitles.Add("Calculadora");
-                    #endregion
-                }
-                return this.mUIAdicionarButton;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private WinButton mUIAdicionarButton;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
-    public class UIItemWindow2 : WinWindow
-    {
-        
-        public UIItemWindow2(UITestControl searchLimitContainer) : 
-                base(searchLimitContainer)
-        {
-            #region Search Criteria
-            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "121";
-            this.WindowTitles.Add("Calculadora");
-            #endregion
-        }
-        
-        #region Properties
-        public WinButton UIIgualaButton
-        {
-            get
-            {
-                if ((this.mUIIgualaButton == null))
-                {
-                    this.mUIIgualaButton = new WinButton(this);
-                    #region Search Criteria
-                    this.mUIIgualaButton.SearchProperties[WinButton.PropertyNames.Name] = "Igual a";
-                    this.mUIIgualaButton.WindowTitles.Add("Calculadora");
-                    #endregion
-                }
-                return this.mUIIgualaButton;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private WinButton mUIIgualaButton;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
-    public class UIItem10Window : WinWindow
-    {
-        
-        public UIItem10Window(UITestControl searchLimitContainer) : 
-                base(searchLimitContainer)
-        {
-            #region Search Criteria
-            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "150";
-            this.WindowTitles.Add("Calculadora");
-            #endregion
-        }
-        
-        #region Properties
-        public WinText UIItem10Text
-        {
-            get
-            {
-                if ((this.mUIItem10Text == null))
-                {
-                    this.mUIItem10Text = new WinText(this);
-                    #region Search Criteria
-                    this.mUIItem10Text.SearchProperties[WinText.PropertyNames.Name] = "Resultado";
-                    this.mUIItem10Text.WindowTitles.Add("Calculadora");
-                    #endregion
-                }
-                return this.mUIItem10Text;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private WinText mUIItem10Text;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
-    public class UICalculadoraTitleBar : WinTitleBar
-    {
-        
-        public UICalculadoraTitleBar(UITestControl searchLimitContainer) : 
-                base(searchLimitContainer)
-        {
-            #region Search Criteria
-            this.WindowTitles.Add("Calculadora");
-            #endregion
-        }
-        
-        #region Properties
-        public WinButton UIFecharButton
-        {
-            get
-            {
-                if ((this.mUIFecharButton == null))
-                {
-                    this.mUIFecharButton = new WinButton(this);
-                    #region Search Criteria
-                    this.mUIFecharButton.SearchProperties[WinButton.PropertyNames.Name] = "Fechar";
-                    this.mUIFecharButton.WindowTitles.Add("Calculadora");
-                    #endregion
-                }
-                return this.mUIFecharButton;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private WinButton mUIFecharButton;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
-    public class UISemtítuloBlocodenotaWindow : WinWindow
-    {
-        
-        public UISemtítuloBlocodenotaWindow()
+        public BlocoDeNotas()
         {
             #region Search Criteria
             this.SearchProperties[WinWindow.PropertyNames.Name] = "Sem título - Bloco de notas";
             this.SearchProperties[WinWindow.PropertyNames.ClassName] = "Notepad";
             this.WindowTitles.Add("Sem título - Bloco de notas");
+            this.WindowTitles.Add("Nome - Bloco de notas");
             #endregion
         }
         
         #region Properties
-        public WinTitleBar UISemtítuloBlocodenotaTitleBar
+        public Janela Janela
         {
             get
             {
-                if ((this.mUISemtítuloBlocodenotaTitleBar == null))
+                if ((this.mJanela == null))
                 {
-                    this.mUISemtítuloBlocodenotaTitleBar = new WinTitleBar(this);
-                    #region Search Criteria
-                    this.mUISemtítuloBlocodenotaTitleBar.WindowTitles.Add("Sem título - Bloco de notas");
-                    #endregion
+                    this.mJanela = new Janela(this);
                 }
-                return this.mUISemtítuloBlocodenotaTitleBar;
+                return this.mJanela;
             }
         }
         
-        public UIItemWindow3 UIItemWindow
+        public BarraDeMenu BarraDeMenu
         {
             get
             {
-                if ((this.mUIItemWindow == null))
+                if ((this.mBarraDeMenu == null))
                 {
-                    this.mUIItemWindow = new UIItemWindow3(this);
+                    this.mBarraDeMenu = new BarraDeMenu(this);
                 }
-                return this.mUIItemWindow;
+                return this.mBarraDeMenu;
+            }
+        }
+        
+        public WinTitleBar BarraDeTitulos
+        {
+            get
+            {
+                if ((this.mBarraDeTitulos == null))
+                {
+                    this.mBarraDeTitulos = new WinTitleBar(this);
+                    #region Search Criteria
+                    this.mBarraDeTitulos.WindowTitles.Add("Nome - Bloco de notas");
+                    #endregion
+                }
+                return this.mBarraDeTitulos;
             }
         }
         #endregion
         
         #region Fields
-        private WinTitleBar mUISemtítuloBlocodenotaTitleBar;
+        private Janela mJanela;
         
-        private UIItemWindow3 mUIItemWindow;
+        private BarraDeMenu mBarraDeMenu;
+        
+        private WinTitleBar mBarraDeTitulos;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
-    public class UIItemWindow3 : WinWindow
+    public class Janela : WinWindow
     {
         
-        public UIItemWindow3(UITestControl searchLimitContainer) : 
+        public Janela(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
@@ -891,24 +318,211 @@ namespace CalculadoraWindowsCUIT
         }
         
         #region Properties
-        public WinEdit UIItemEdit
+        public WinEdit CampoDeTexto
         {
             get
             {
-                if ((this.mUIItemEdit == null))
+                if ((this.mCampoDeTexto == null))
                 {
-                    this.mUIItemEdit = new WinEdit(this);
+                    this.mCampoDeTexto = new WinEdit(this);
                     #region Search Criteria
-                    this.mUIItemEdit.WindowTitles.Add("Sem título - Bloco de notas");
+                    this.mCampoDeTexto.WindowTitles.Add("Sem título - Bloco de notas");
                     #endregion
                 }
-                return this.mUIItemEdit;
+                return this.mCampoDeTexto;
             }
         }
         #endregion
         
         #region Fields
-        private WinEdit mUIItemEdit;
+        private WinEdit mCampoDeTexto;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
+    public class BarraDeMenu : WinMenuBar
+    {
+        
+        public BarraDeMenu(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinMenu.PropertyNames.Name] = "Aplicativo";
+            this.WindowTitles.Add("Sem título - Bloco de notas");
+            #endregion
+        }
+        
+        #region Properties
+        public MenuArquivo MenuArquivo
+        {
+            get
+            {
+                if ((this.mMenuArquivo == null))
+                {
+                    this.mMenuArquivo = new MenuArquivo(this);
+                }
+                return this.mMenuArquivo;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private MenuArquivo mMenuArquivo;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
+    public class MenuArquivo : WinMenuItem
+    {
+        
+        public MenuArquivo(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinMenuItem.PropertyNames.Name] = "Arquivo";
+            this.WindowTitles.Add("Sem título - Bloco de notas");
+            #endregion
+        }
+        
+        #region Properties
+        public WinMenuItem MenuSalvar
+        {
+            get
+            {
+                if ((this.mMenuSalvar == null))
+                {
+                    this.mMenuSalvar = new WinMenuItem(this);
+                    #region Search Criteria
+                    this.mMenuSalvar.SearchProperties[WinMenuItem.PropertyNames.Name] = "Salvar\tCtrl+S";
+                    this.mMenuSalvar.SearchConfigurations.Add(SearchConfiguration.ExpandWhileSearching);
+                    this.mMenuSalvar.WindowTitles.Add("Sem título - Bloco de notas");
+                    #endregion
+                }
+                return this.mMenuSalvar;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinMenuItem mMenuSalvar;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
+    public class JanelaSalvar : WinWindow
+    {
+        
+        public JanelaSalvar()
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.Name] = "Salvar como";
+            this.SearchProperties[WinWindow.PropertyNames.ClassName] = "#32770";
+            this.WindowTitles.Add("Salvar como");
+            #endregion
+        }
+        
+        #region Properties
+        public PainelDeDetalhes PainelDeDetalhes
+        {
+            get
+            {
+                if ((this.mPainelDeDetalhes == null))
+                {
+                    this.mPainelDeDetalhes = new PainelDeDetalhes(this);
+                }
+                return this.mPainelDeDetalhes;
+            }
+        }
+        
+        public UISalvarWindow UISalvarWindow
+        {
+            get
+            {
+                if ((this.mUISalvarWindow == null))
+                {
+                    this.mUISalvarWindow = new UISalvarWindow(this);
+                }
+                return this.mUISalvarWindow;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private PainelDeDetalhes mPainelDeDetalhes;
+        
+        private UISalvarWindow mUISalvarWindow;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
+    public class PainelDeDetalhes : WinPane
+    {
+        
+        public PainelDeDetalhes(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinControl.PropertyNames.Name] = "Painel de Detalhes";
+            this.WindowTitles.Add("Salvar como");
+            #endregion
+        }
+        
+        #region Properties
+        public WinComboBox txtNomeDoArquivo
+        {
+            get
+            {
+                if ((this.mtxtNomeDoArquivo == null))
+                {
+                    this.mtxtNomeDoArquivo = new WinComboBox(this);
+                    #region Search Criteria
+                    this.mtxtNomeDoArquivo.SearchProperties[WinComboBox.PropertyNames.Name] = "Nome:";
+                    this.mtxtNomeDoArquivo.WindowTitles.Add("Salvar como");
+                    #endregion
+                }
+                return this.mtxtNomeDoArquivo;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinComboBox mtxtNomeDoArquivo;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "12.0.21005.1")]
+    public class UISalvarWindow : WinWindow
+    {
+        
+        public UISalvarWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "1";
+            this.WindowTitles.Add("Salvar como");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton BotaoSalvar
+        {
+            get
+            {
+                if ((this.mBotaoSalvar == null))
+                {
+                    this.mBotaoSalvar = new WinButton(this);
+                    #region Search Criteria
+                    this.mBotaoSalvar.SearchProperties[WinButton.PropertyNames.Name] = "Salvar";
+                    this.mBotaoSalvar.WindowTitles.Add("Salvar como");
+                    #endregion
+                }
+                return this.mBotaoSalvar;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mBotaoSalvar;
         #endregion
     }
 }
