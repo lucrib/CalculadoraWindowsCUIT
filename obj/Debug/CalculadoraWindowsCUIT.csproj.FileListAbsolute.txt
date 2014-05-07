@@ -1,0 +1,5 @@
+c:\users\lucas ribeiro\documents\visual studio 2013\Projects\CalculadoraWindowsCUIT\CalculadoraWindowsCUIT\bin\Debug\CalculadoraWindowsCUIT.dll
+c:\users\lucas ribeiro\documents\visual studio 2013\Projects\CalculadoraWindowsCUIT\CalculadoraWindowsCUIT\bin\Debug\CalculadoraWindowsCUIT.pdb
+c:\users\lucas ribeiro\documents\visual studio 2013\Projects\CalculadoraWindowsCUIT\CalculadoraWindowsCUIT\obj\Debug\CalculadoraWindowsCUIT.csprojResolveAssemblyReference.cache
+c:\users\lucas ribeiro\documents\visual studio 2013\Projects\CalculadoraWindowsCUIT\CalculadoraWindowsCUIT\obj\Debug\CalculadoraWindowsCUIT.dll
+c:\users\lucas ribeiro\documents\visual studio 2013\Projects\CalculadoraWindowsCUIT\CalculadoraWindowsCUIT\obj\Debug\CalculadoraWindowsCUIT.pdb

@@ -1,1 +1,3 @@
 #Nothing for a while
+bin\Debug\*
+obj\Debug\*
